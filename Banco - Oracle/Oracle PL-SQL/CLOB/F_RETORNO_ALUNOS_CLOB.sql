@@ -1,0 +1,31 @@
+create or replace FUNCTION F_RETORNO_ALUNOS_CLOB (
+    E_COD_ALUN              IN                  NUMBER
+    
+) RETURN CLOB IS
+
+    L_LEN            BINARY_INTEGER;
+    L_CONTENT        VARCHAR2(32000);
+    W_MENSAGEM_AUX   CLOB := EMPTY_CLOB;
+    VNOME            VARCHAR2(32000);
+    VCIDADE          VARCHAR2(32000);
+BEGIN
+    DBMS_LOB.CREATETEMPORARY(W_MENSAGEM_AUX, TRUE);
+    DBMS_LOB.OPEN(W_MENSAGEM_AUX, DBMS_LOB.LOB_READWRITE);
+
+    ----
+
+    SELECT A.NOME, A.CIDADE
+    INTO VNOME, VCIDADE
+    FROM TALUNO A WHERE A.COD_ALUNO = E_COD_ALUN;
+
+        L_CONTENT := 'NOME=' || VNOME || ';' ||
+                     'CIDADE=' || VCIDADE || ';' || '</>';
+
+                        L_LEN := LENGTH(L_CONTENT);
+                        DBMS_LOB.WRITEAPPEND(W_MENSAGEM_AUX, L_LEN, L_CONTENT);
+
+    ---
+    
+    DBMS_LOB.CLOSE(W_MENSAGEM_AUX);
+    RETURN W_MENSAGEM_AUX;
+END;

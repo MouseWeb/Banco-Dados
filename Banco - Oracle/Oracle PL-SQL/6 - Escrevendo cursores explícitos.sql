@@ -11,13 +11,10 @@ BEGIN
    LOOP
       FETCH c1 INTO vCod_Aluno, vNome;  --pega registro atual
       EXIT WHEN c1%ROWCOUNT > 10 OR c1%NOTFOUND;
-      Dbms_Output.Put_Line('Codigo: '||
-        LPad(vcod_aluno,4,'0')||' - '||'Nome: '||vNome);
+      Dbms_Output.Put_Line('Codigo: '|| LPad(vcod_aluno,4,'0')||' - '||'Nome: '||vNome);
    END LOOP;
    CLOSE c1; --fecha cursor
 END;
-
-
 
 --
 
@@ -39,7 +36,7 @@ END;
 --
 
 
------
+-----  Metodo Aconselhavel
 DECLARE
   CURSOR c1 IS
     SELECT * FROM TAluno;
@@ -51,7 +48,11 @@ BEGIN
        LPad(reg.cod_aluno,5,'0')||' - ' || 'Nome: '||reg.nome);
   END LOOP;
 END;
+
+
 --
+
+
 DECLARE
   Reg TALUNO%ROWTYPE;
 BEGIN

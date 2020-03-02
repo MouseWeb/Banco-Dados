@@ -24,8 +24,9 @@ DELETE FROM TDESCONTO
 WHERE CLASSE = '&cla';
 
 ----------------------------------------
+-- Criar tabela nova apartir da tabela do select
 CREATE TABLE TDESCONTO2
-  AS SELECT * FROM TDESCONTO
+  AS SELECT * FROM TDESCONTO;
 
 SELECT * FROM TDESCONTO2;
 
@@ -63,6 +64,7 @@ COMMIT;
 SELECT * FROM TDESCONTO
 
 --Savepoint
+-- Ponto de restauração
 SAVEPOINT upd_b;
 
 UPDATE TDESCONTO SET

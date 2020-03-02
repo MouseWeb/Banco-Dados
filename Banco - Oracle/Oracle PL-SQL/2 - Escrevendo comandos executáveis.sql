@@ -1,5 +1,17 @@
 --Bloco anonimo
 
+DECLARE 
+    X INTEGER;
+    Y INTEGER;
+    C INTEGER;
+BEGIN
+    X := 10;
+    Y := 20;
+    C := X + Y;
+    Dbms_Output.Put_Line('Resultado: ' || c);
+END;
+
+
 DECLARE
   VDESCONTO NUMBER(6,2) := 0.50;
   VCIDADE VARCHAR(30)   := 'NOVO HAMBURGO';
@@ -19,7 +31,7 @@ END;
 
 --
 SELECT * FROM TCurso;
-SELECT * FROM TAluno
+SELECT * FROM TAluno;
 
 DECLARE
   vPreco1 NUMBER(8,2)   := 10;
@@ -65,12 +77,12 @@ DECLARE
 BEGIN
 
   DECLARE
-    VTESTE VARCHAR(10) := 'XXXX';
+    -- VTESTE VARCHAR(10) := 'XXXX';
   BEGIN
-    Dbms_Output.Put_Line(VTESTE);
+    Dbms_Output.Put_Line('Bloco Interno: ' || VTESTE);
   END;
   --
-  Dbms_Output.Put_Line(VTESTE);
+  Dbms_Output.Put_Line('Bloco Externo: ' || VTESTE);
 
 END;
 

@@ -16,8 +16,6 @@ END;
 SELECT * FROM TCurso;
 
 
-
-
 DECLARE
    vDt_compra  tcontrato.Data%TYPE;
    vDt_curso   tcontrato.Data%TYPE;
@@ -32,10 +30,8 @@ END;
 
 SELECT * FROM TCONTRATO;
 
-
-
 SELECT Max(COD_CONTRATO) FROM TCONTRATO;
-CREATE SEQUENCE SEQ_CONTRATO1 START WITH 11;
+CREATE SEQUENCE SEQ_CONTRATO1 START WITH 8;
 --
 DECLARE
   vCod tcontrato.cod_contrato%TYPE;
@@ -92,10 +88,6 @@ BEGIN
    FROM   tcontrato WHERE  Data = vDt_atual;	--
    Dbms_Output.Put_Line('Resultado Select');
 END;
-
-
-
-
 
 
 

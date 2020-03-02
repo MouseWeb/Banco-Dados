@@ -1,5 +1,3 @@
-
-
 DECLARE
    --
    TYPE Rec_aluno IS RECORD

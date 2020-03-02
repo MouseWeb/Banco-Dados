@@ -67,9 +67,6 @@ END;
 
 
 
-
-
-
 --For loop -> mais indicado para laços em tabelas
 DECLARE
   vContador INTEGER;

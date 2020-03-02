@@ -31,7 +31,7 @@ ALTER SEQUENCE SEQ_ALUNO1 MAXVALUE  500;
 DROP SEQUENCE SEQ_ALUNO1;
 CREATE SEQUENCE SEQ_ALUNO1 START WITH 80;
 
-
+--------------------------------------------------------------------------------
 
 --Indices Secundario
 SELECT NOME FROM TALUNO
@@ -49,13 +49,14 @@ ON TALUNO(NOME, CIDADE);
 SELECT nome,cidade FROM TALUNO
 WHERE NOME LIKE '%A%' AND CIDADE LIKE '%A%';
 
+--Consultar os indeces das tabelas
 SELECT * FROM USER_INDEXES;
 
 DROP INDEX IND_TALU_NOMECIDADE;
 
 
 --Sinonimos
-
+-- Diminuir o tamanho do nome da tabela - da um apelido para um objeto/tabela
 CREATE SYNONYM ALU FOR TALUNO;
 
 

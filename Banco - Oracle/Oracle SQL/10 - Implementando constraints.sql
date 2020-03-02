@@ -96,7 +96,7 @@ INSERT INTO TRUA VALUES (3,3,1,'JACOBINA');
 INSERT INTO TRUA VALUES (4,3,1,'JOAO DA SILVA');
 
 
---Check
+--Check - só vai aceitar a letra C ou a letra F
 ALTER TABLE TPESSOA ADD CONSTRAINT CK_PESSOA_TIPO
 CHECK (TIPO IN ('C','F'));
 
@@ -104,8 +104,7 @@ CHECK (TIPO IN ('C','F'));
 ALTER TABLE TPESSOA ADD CONSTRAINT CK_PESSOA_JF
 CHECK (PESSOA IN ('J','F'));
 
-
---Excluir constraint
+--Excluir constraint - caso criado errado
 ALTER TABLE TPESSOA DROP CONSTRAINT UK_CPF;
 
 --Unique Key
@@ -130,7 +129,7 @@ ALTER TABLE TCONTRATO
 ADD CONSTRAINT CK_CONTRATO_DESCONTO
 CHECK (DESCONTO BETWEEN 0 AND 30);
 
-SELECT * FROM TCONTRATO
+SELECT * FROM TCONTRATO;
 
 --Desabilitando/Habilitando constraint
 ALTER TABLE TPESSOA DISABLE CONSTRAINT uk_cpf;
@@ -139,6 +138,7 @@ ALTER TABLE TPESSOA ENABLE CONSTRAINT uk_cpf;
 --Excluir Constraint
 ALTER TABLE TPESSOA DROP CONSTRAINT uk_cpf;
 
+--Mostra todas as constraint da tabela
 SELECT * FROM user_constraints
 WHERE table_name = 'TPESSOA';
 

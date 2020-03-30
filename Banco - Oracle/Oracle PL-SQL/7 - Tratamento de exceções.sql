@@ -1,10 +1,10 @@
 DECLARE
-  vCod   taluno.cod_aluno%TYPE := 566;
+  vCod   taluno.cod_aluno%TYPE := 1;
   vCidade taluno.cidade%TYPE;    x NUMBER;
 BEGIN
   SELECT Cidade INTO vCidade
   FROM TAluno
-  WHERE nome LIKE '%';
+  WHERE cod_aluno = vCod;
   --WHERE  cod_aluno = vCod;
   X := 0 / 0;
   Dbms_Output.Put_Line('Cidade: '||vCidade);

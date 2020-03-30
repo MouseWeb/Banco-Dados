@@ -19,9 +19,44 @@ BEGIN
   Dbms_Output.Put_Line('Preco do curso: '||vValor);
 END;
 
+-------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION f_existe_aluno
+( pcod_aluno IN taluno.cod_aluno%TYPE)
+RETURN BOOLEAN 
+IS 
+  valunos NUMBER(10);
+BEGIN
+    SELECT cod_aluno
+    INTO valunos
+    FROM taluno
+    WHERE cod_aluno = pcod_aluno;
+    RETURN( TRUE );
+EXCEPTION
+    WHEN others THEN
+        RETURN( FALSE );
+END;
+
+DECLARE 
+    vcodigo INTEGER := 1;
+BEGIN
+    IF f_existe_aluno(vcodigo) then
+        dbms_output.put_line('Código encontrado');
+    ELSE
+        dbms_output.put_line('Código não encontrado');
+    END IF;
+END;
+
+-----------------------------------------------
+
+CREATE OR REPLACE FUNCTION f_cadastra_aluno
+(pcod_aluno IN taluno.cod_aluno%TYPE,
+ pnome      IN taluno.nome%TYPE
+
+-----------------------------------------------
 
 --Conectado como System
-GRANT CREATE ANY TYPE TO MARCIO;
+GRANT CREATE ANY TYPE TO DOUGLAS;
 
 --Registro - Array
 DROP TYPE TABLE_REG_ALUNO;

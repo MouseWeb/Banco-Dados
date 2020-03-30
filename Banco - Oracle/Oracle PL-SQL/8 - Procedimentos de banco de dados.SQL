@@ -20,7 +20,7 @@ begin
   AUMENTA_PRECOCURSO(vcod);
 end;
 
-
+desc TCURSO;
 --
 CREATE OR REPLACE PROCEDURE Aumenta_Preco
 (pCODIGO IN TCURSO.COD_CURSO%TYPE)
@@ -151,6 +151,7 @@ de registros excluidos como saida e imprimir esta informaçao.
 
 --vCod NUMBER;
 --Pcod := Seq_Alu.NEXTVAL;
+-------------------------------------------------------
 
 CREATE SEQUENCE seq_alu START WITH 500;
 -------------------------------------------------------
@@ -160,7 +161,9 @@ CREATE OR REPLACE PROCEDURE cad_aluno
  pcidade IN VARCHAR)
 IS
 BEGIN
-  SELECT SEQ_ALU.NEXTVAL INTO PCOD FROM DUAL;
+  SELECT SEQ_ALU.NEXTVAL 
+  INTO PCOD 
+  FROM DUAL;
   INSERT INTO taluno(cod_Aluno,Nome,Cidade)
   VALUES (pCod,pNome,pCidade);
 END;
@@ -209,3 +212,4 @@ BEGIN
   Dbms_Output.Put_Line(vMsg);
 END;
 
+select * from douglas.tcontrato;

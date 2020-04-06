@@ -41,9 +41,9 @@ IS
   vRetorno VARCHAR2(4000);
   vRet VARCHAR2(4000);
 BEGIN
-  OPEN cCursor1 FOR ' SELECT '||pColunas||
-                    ' FROM '||pTabelas||
-                    ' WHERE '||pCondicoes;
+  OPEN cCursor1 FOR ' SELECT ' ||pColunas||
+                    ' FROM   ' ||pTabelas||
+                    ' WHERE  ' ||pCondicoes;
   LOOP
     FETCH cCursor1 INTO vRetorno, vret;
     EXIT WHEN cCursor1%NOTFOUND;

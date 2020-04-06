@@ -47,9 +47,11 @@ SELECT nome, SubStr(NOME,3,1) FROM TALUNO;
 --
 SELECT REPLACE(Upper(NOME),'R','$') FROM TALUNO;
 
---
+select nome from TALUNO where length(nome) > 15;
 
 SELECT SubStr(NOME,Length(nome),1) FROM TALUNO;
+
+SELECT SubStr(NOME,Length(nome) > 2) FROM TALUNO;
 
 --
 SELECT SubStr(NOME,Length(nome)-1, 2) FROM TALUNO;

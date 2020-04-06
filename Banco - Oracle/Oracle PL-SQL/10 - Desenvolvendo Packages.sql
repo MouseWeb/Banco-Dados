@@ -22,7 +22,7 @@ IS
    vTESTE := 'teste';
    SELECT Avg(total) INTO vMEDIA FROM tcontrato;
  END;
- --************
+ --************Consulta aluno
  PROCEDURE CON_ALUNO(pCOD_ALUNO NUMBER)
  IS
  BEGIN
@@ -49,14 +49,14 @@ END;
 
 
 --USANDO
-EXEC PKG_ALUNO.DELETA_ALUNO(666);
+EXEC PKG_ALUNO.DELETA_ALUNO(2);
 
 SELECT * FROM TALUNO;
 
 
 
 
---
+-- bloco anonimo
 DECLARE
   m NUMBER;
 BEGIN
@@ -71,11 +71,10 @@ END;
 DECLARE
   nome VARCHAR(30);
 BEGIN
-  pkg_aluno.con_aluno(89); --executa a procedure
+  pkg_aluno.con_aluno(1); --executa a procedure
   nome := pkg_aluno.vnome;
   Dbms_Output.Put_Line('Nome '||nome);
 END;
-
 
 --
 BEGIN

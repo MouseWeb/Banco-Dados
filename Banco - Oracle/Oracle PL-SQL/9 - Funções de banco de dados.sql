@@ -38,13 +38,35 @@ EXCEPTION
 END;
 
 DECLARE 
-    vcodigo INTEGER := 1;
+    vcodigo INTEGER := 2;
 BEGIN
     IF f_existe_aluno(vcodigo) then
         dbms_output.put_line('Código encontrado');
     ELSE
         dbms_output.put_line('Código não encontrado');
     END IF;
+END;
+
+-----------------------------------------------
+
+CREATE OR REPLACE PROCEDURE p_cadastra_aluno
+(pcod_aluno IN taluno.cod_aluno%TYPE,
+ pnome      IN taluno.nome%TYPE,
+ pcidade    IN taluno.cidade%TYPE,
+ pestado    IN taluno.estado%TYPE)
+ IS
+BEGIN
+    IF (NOT f_existe_aluno(pcod_aluno) ) THEN
+        INSERT INTO taluno(cod_aluno, nome, cidade, estado) 
+        VALUES (pcod_aluno, pnome, pcidade, pestado);
+        dbms_output.put_line('Aluno Cadastrado com sucesso');
+    ELSE 
+        dbms_output.put_line('CÓDIGO JÁ EXISTE');
+    END IF;
+END;
+
+BEGIN
+    p_cadastra_aluno(seq_aluno.nextval, 'Douglas' ,'Guarulhos' ,'SP' );
 END;
 
 -----------------------------------------------
@@ -179,7 +201,7 @@ BEGIN
   RETURN;
 END;
 
-SELECT * FROM TABLE(GET_TOTALALUNO(1));
+SELECT * FROM TABLE(GET_TOTALALUNO(2));
 
 2) Criar uma FUNCTION que retorne
  Cod_Contrato, Data, NomeAluno, Total

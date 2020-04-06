@@ -5,13 +5,12 @@
   FROM TCONTRATO
   WHERE COD_ALUNO = 1
 
-  UNION ALL       ---Nao agrupa iguais
-  --UNION         ---Agrupa iguais
+  --UNION ALL       --- Nao agrupa iguais (todos os registro das duas query, mesmo que sejam iguais, nesse caso repete) duplica ps registro iguais.
+  UNION         --- Agrupa iguais (todos registros sem duplicar no resultado os registro iguais)
 
   SELECT COD_ALUNO, TOTAL, DESCONTO
   FROM TCONTRATO
   WHERE TOTAL >= 1000;
-
 
 --
 
@@ -41,8 +40,7 @@ SELECT COD_CONTRATO, DATA, DESCONTO, TOTAL
 FROM   TCONTRATO
 WHERE  DESCONTO IS NOT NULL
 
-INTERSECT
---Registros estao presentes em todos os conjuntos.
+INTERSECT --Registros estao presentes em todos os conjuntos (dados tem que ter na duas query iguais).
 
 SELECT COD_CONTRATO, DATA, DESCONTO, TOTAL
 FROM   TCONTRATO
@@ -66,14 +64,6 @@ WHERE  TOTAL > 2000
 ORDER  BY 1;
 
 
-
-
-
-
-
-
-
-
 --
 INSERT INTO TALUNO (COD_ALUNO, NOME)
 VALUES( (SELECT NVL(MAX(COD_ALUNO),0) + 1 FROM TALUNO),
@@ -89,11 +79,6 @@ SELECT (SELECT MAX(Total) FROM TContrato) MAIOR,
 FROM DUAL;
 
 --
-
-
-
-
-
 
 
 

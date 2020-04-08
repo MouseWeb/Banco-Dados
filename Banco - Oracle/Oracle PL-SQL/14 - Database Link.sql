@@ -10,3 +10,4 @@ USING 'xe'            --tns (sid)
 --TNS
 
 SELECT * FROM TALUNO@FILIAL;
+
